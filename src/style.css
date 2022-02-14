@@ -14,10 +14,6 @@ body {
   border-radius: 0.125rem;
   box-shadow: rgb(0 0 0 / 24%) 0 3px 8px;
   background-color: #fff;
-
-  /* width: 50%; */
-
-  /* padding: 1rem; */
 }
 
 .todo__header {
@@ -49,10 +45,6 @@ body {
 .todo__root {
   display: flex;
   flex-direction: column;
-
-  /* gap: 2rem; */
-
-  /* padding: 2rem; */
   width: 100%;
   padding-left: 0;
   margin-top: 0;
@@ -74,39 +66,11 @@ body {
   margin-right: 1rem;
 }
 
-.todo__container ul li .kebab {
-  /* color: grey;
-  float: right;
-  cursor: move; */
-}
-
-.fa-ellipsis-v::before {
-  /* color: red; */
-
-  /* display: flex; */
-
-  /* align-self: flex-end; */
-
-  /* flex: 1; */
-}
-
-.fa-ellipsis-v {
-  /* display: flex; */
-
-  /* align-self: flex-end; */
-
-  /* color: red; */
-
-  /* float: right; */
-}
-
 .todo__btn {
   all: unset;
   width: 100%;
   color: grey;
   background-color: #e6e6e6;
-
-  /* height: 6rem; */
   padding: 1rem 0;
   text-align: center;
   cursor: pointer;
