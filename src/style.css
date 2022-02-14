@@ -14,6 +14,8 @@ body {
   border-radius: 0.125rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
   background-color: #fff;
+  /* width: 50%; */
+  /* padding: 1rem; */
 }
 
 .todo__header {
@@ -23,5 +25,82 @@ body {
 }
 
 .todo__h1 {
-  font-size: 1em;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  margin-left: 1rem;
+}
+
+.todo__input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  padding: 1rem 1rem;
+  font-style: italic;
+}
+
+::placeholder {
+  margin-left: 1rem;
+}
+
+.todo__root {
+  display: flex;
+  flex-direction: column;
+  /* gap: 2rem; */
+  /* padding: 2rem; */
+  width: 100%;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.todo__task {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  list-style: none;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  padding: 1rem;
+}
+
+.refresh {
+  margin-right: 1rem;
+}
+
+/*  */
+
+.todo__container ul li .kebab {
+  /* color: grey;
+  float: right;
+  cursor: move; */
+}
+
+.fa-ellipsis-v:before {
+  /* color: red; */
+  /* display: flex; */
+  /* align-self: flex-end; */
+  /* flex: 1; */
+}
+
+.fa-ellipsis-v {
+  /* display: flex; */
+  /* align-self: flex-end; */
+  /* color: red; */
+  /* float: right; */
+}
+
+/*  */
+
+.todo__btn {
+  all: unset;
+  width: 100%;
+  color: grey;
+  background-color: #e6e6e6;
+  /* height: 6rem; */
+  padding: 1rem 0;
+  text-align: center;
+  cursor: pointer;
 }
