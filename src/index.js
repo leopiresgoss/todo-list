@@ -2,7 +2,7 @@ import './style.css';
 import tasks from './tasks.js';
 import { createElement, render } from './elements.js';
 
-function displayTasks(task) {
+function displayTasks() {
   tasks.forEach((task) => {
     const input = createElement('input', {
       type: 'checkbox',

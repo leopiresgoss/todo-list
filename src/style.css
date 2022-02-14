@@ -74,8 +74,6 @@ body {
   margin-right: 1rem;
 }
 
-/*  */
-
 .todo__container ul li .kebab {
   /* color: grey;
   float: right;
@@ -101,8 +99,6 @@ body {
 
   /* float: right; */
 }
-
-/*  */
 
 .todo__btn {
   all: unset;
