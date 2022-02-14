@@ -1,5 +1,5 @@
 <!-- TODO -->
-## You will need to implement the following functionalities (presented in the video above):
+<!-- ## You will need to implement the following functionalities (presented in the video above):
 
 You will need to implement the following functionalities (presented in the video above):
 - Adding a new item.
@@ -37,7 +37,7 @@ You will need to implement the following functionalities (presented in the video
 - Add event listener to the checkbox (`change`).
 - Update items object's value for `completed` key upon user actions.
 - Implement a function for the "Clear all completed" button (use `filter()` method).
-- Store the updated array of items in local storage, so the user gets the correct list values after the page reloads.
+- Store the updated array of items in local storage, so the user gets the correct list values after the page reloads. -->
 
 <!-- TODO -->
 # todo-list
@@ -51,16 +51,15 @@ Todo list is a tool that helps to organize your day. It simply lists the things 
 - Frameworks: None
 - Technologies: Webpack, NPM
 
-## Live Demo
-
-[Live Demo](https://fbclh.github.io/awesome-books/)
-
-
 ## Getting Started
 
 Run
 ```sh
-   git clone git@github.com:fbclh/todo-list
+   git clone https://github.com/fbclh/todo-list.git
+```
+Run
+```sh
+   npm start   
 ```
 ## Authors
 ### Fabio Coelho
