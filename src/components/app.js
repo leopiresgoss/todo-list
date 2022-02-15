@@ -23,7 +23,7 @@ class TodoApp {
   // Main
   getIndex() {
     return this.taskArr.length + 1;
-  } 
+  }
 
   updateTaskArr() {
     const tempArr = [...this.taskArr];
