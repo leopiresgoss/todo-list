@@ -1,23 +1,23 @@
 import './style.css';
-import tasks from './tasks.js';
-import { createElement, render } from './elements.js';
+import TodoApp from './components/app.js';
 
-function displayTasks() {
-  tasks.forEach((task) => {
-    const input = createElement('input', {
-      type: 'checkbox',
-      class: 'todo__checkbox',
-    });
-    const textTask = task.description;
-    const icon = createElement('i', { class: 'fas fa-ellipsis-v kebab' });
-    const list = createElement('li', { class: 'todo__task' }, [
-      input,
-      textTask,
-      icon,
-    ]);
+const app = new TodoApp();
+const newTask = document.querySelector('.todo__input');
+const refreshBtn = document.querySelector('.refresh');
 
-    render(list, document.querySelector('.todo__root'));
+function main() {
+  app.getLocalStorage();
+  app.displayTasks();
+
+  refreshBtn.addEventListener('click', () => {
+    app.displayTasks();
+  });
+
+  newTask.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+      app.addTask(newTask);
+    }
   });
 }
 
-displayTasks(tasks);
+main();

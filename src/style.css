@@ -32,8 +32,8 @@ body {
   width: 100%;
   border: none;
   outline: none;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
+  border-top: 1px solid rgb(216, 216, 216);
+  border-bottom: 1px solid rgb(216, 216, 216);
   padding: 1rem;
   font-style: italic;
 }
@@ -58,7 +58,6 @@ body {
   gap: 1rem;
   list-style: none;
   width: 100%;
-  border-bottom: 1px solid grey;
   padding: 1rem;
 }
 
@@ -75,3 +74,9 @@ body {
   text-align: center;
   cursor: pointer;
 }
+
+.todo__btn:hover {
+  color: black;
+  text-decoration: underline;
+}
+
