@@ -80,3 +80,54 @@ body {
   text-decoration: underline;
 }
 
+/* Add BEM bellow */
+
+li {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+li.todo__task-li {
+  padding-right: 0.5rem;
+  border-bottom: 1px solid rgb(216, 216, 216);
+}
+
+.todo__checkbox {
+  margin-right: 1rem;
+}
+
+.todo__text-task {
+  flex: 1;
+  padding: 1rem;
+  margin-right: 0.5rem;
+  border: none;
+  outline: none;
+  resize: none;
+  background-color: transparent;
+}
+
+textarea.todo__text-task {
+  padding-left: 0;
+}
+
+.todo__container .todo__root li .icon {
+  cursor: move;
+  padding: 1rem;
+  text-align: center;
+  display: none;
+}
+
+.todo__container .todo__root li .icon:hover {
+  color: black;
+}
+
+.highlight {
+  background-color: rgb(245, 245, 245);
+}
+
+.todo__container .todo__root li .visible {
+  display: block;
+}
