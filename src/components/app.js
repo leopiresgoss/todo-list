@@ -92,7 +92,7 @@ class TodoApp {
       const textTask = createElement(
         'textarea',
         { class: 'todo__text-task', contenteditable: 'true', rows: 1 },
-        [task.description]
+        [task.description],
       );
       const ellipsisIcon = createElement('i', {
         class: 'fas fa-ellipsis-v icon visible',
