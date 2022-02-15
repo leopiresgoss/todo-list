@@ -92,18 +92,17 @@ class TodoApp {
       const textTask = createElement(
         'textarea',
         { class: 'todo__text-task', contenteditable: 'true', rows: 1 },
-        [task.description],
+        [task.description]
       );
       const ellipsisIcon = createElement('i', {
         class: 'fas fa-ellipsis-v icon visible',
       });
       const trashIcon = createElement('i', { class: 'fas fa-trash-alt icon' });
-      const li = createElement('li', { class: 'todo__task-li', draggable: 'true' }, [
-        input,
-        textTask,
-        ellipsisIcon,
-        trashIcon,
-      ]);
+      const li = createElement(
+        'li',
+        { class: 'todo__task-li', draggable: 'true' },
+        [input, textTask, ellipsisIcon, trashIcon]
+      );
       this.addActivationEvent(textTask, li, ellipsisIcon, trashIcon, index);
       this.addDeactivationEvent(textTask, li, ellipsisIcon, trashIcon);
       render(li, root);
@@ -122,7 +121,7 @@ class TodoApp {
       newTaskInput.value = '';
       this.displayTasks();
     }
-  }
+  };
 }
 
 export default TodoApp;
