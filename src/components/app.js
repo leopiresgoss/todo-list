@@ -21,9 +21,8 @@ class TodoApp {
   }
 
   // Main
-  getIndex() {
-    return this.taskArr.length + 1;
-  }
+  getIndex = () => this.taskArr.length + 1;
+  
 
   updateTaskArr() {
     const tempArr = [...this.taskArr];
@@ -45,14 +44,14 @@ class TodoApp {
     });
   }
 
-  addChangesListener(textTask, index) {
+  addChangesListener = (textTask, index) => {
     textTask.addEventListener('input', () => {
       this.taskArr[index].description = textTask.value;
       this.saveLocalStorage();
     });
   }
 
-  static setClasses(activate, li, ellipsisIcon, trashIcon, cursorStyle) {
+  setClasses(activate, li, ellipsisIcon, trashIcon, cursorStyle) {
     if (activate) {
       li.classList.add('highlight');
       trashIcon.classList.add('visible');
