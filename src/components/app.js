@@ -114,7 +114,7 @@ class TodoApp {
     const newTask = new Tasks(taskDescription, false, this.getIndex());
     this.taskArr.push(newTask);
     this.saveLocalStorage();
-  };
+  }
 
   addTask = (newTaskInput) => {
     if (newTaskInput.value) {
@@ -122,7 +122,7 @@ class TodoApp {
       newTaskInput.value = '';
       this.displayTasks();
     }
-  };
+  }
 }
 
 export default TodoApp;
