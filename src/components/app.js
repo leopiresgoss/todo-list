@@ -47,7 +47,7 @@ class TodoApp {
     textTask.addEventListener('input', () => {
       this.taskArr[index].description = textTask.value;
       this.saveLocalStorage();
-    });
+    })
   };
 
   setClasses = (activate, li, ellipsisIcon, trashIcon, cursorStyle) => {
