@@ -52,7 +52,7 @@ class TodoApp {
     });
   }
 
-  setClasses(activate, li, ellipsisIcon, trashIcon, cursorStyle) {
+  static setClasses(activate, li, ellipsisIcon, trashIcon, cursorStyle) {
     if (activate) {
       li.classList.add('highlight');
       trashIcon.classList.add('visible');
