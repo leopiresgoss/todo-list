@@ -21,7 +21,9 @@ class TodoApp {
   }
 
   // Main
-  getIndex = () => this.taskArr.length + 1;
+  getIndex() {
+    return this.taskArr.length + 1;
+  } 
 
   updateTaskArr() {
     const tempArr = [...this.taskArr];
@@ -99,7 +101,7 @@ class TodoApp {
       const li = createElement(
         'li',
         { class: 'todo__task-li', draggable: 'true' },
-        [input, textTask, ellipsisIcon, trashIcon]
+        [input, textTask, ellipsisIcon, trashIcon],
       );
       this.addActivationEvent(textTask, li, ellipsisIcon, trashIcon, index);
       this.addDeactivationEvent(textTask, li, ellipsisIcon, trashIcon);
