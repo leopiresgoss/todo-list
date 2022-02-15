@@ -21,9 +21,7 @@ class TodoApp {
   }
 
   // Main
-  getIndex() {
-    this.taskArr.length + 1;
-  }
+  getIndex = () => this.taskArr.length + 1;
 
   updateTaskArr() {
     const tempArr = [...this.taskArr];
@@ -92,7 +90,7 @@ class TodoApp {
       const textTask = createElement(
         'textarea',
         { class: 'todo__text-task', contenteditable: 'true', rows: 1 },
-        [task.description]
+        [task.description],
       );
       const ellipsisIcon = createElement('i', {
         class: 'fas fa-ellipsis-v icon visible',
