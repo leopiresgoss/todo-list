@@ -132,3 +132,11 @@ textarea.todo__text-task {
   display: block;
 }
 
+.underlined {
+  text-decoration: line-through;
+  color: grey;
+}
+
+i.icon.fas.fa-trash-alt.trash-icon.visible {
+  cursor: pointer;
+}
