@@ -32,8 +32,8 @@ body {
   width: 100%;
   border: none;
   outline: none;
-  border-top: 1px solid rgb(216, 216, 216);
-  border-bottom: 1px solid rgb(216, 216, 216);
+  border-top: 1px solid rgb(216 216 216);
+  border-bottom: 1px solid rgb(216 216 216);
   padding: 1rem;
   font-style: italic;
 }
@@ -92,7 +92,7 @@ li {
 
 li.todo__task-li {
   padding-right: 0.5rem;
-  border-bottom: 1px solid rgb(216, 216, 216);
+  border-bottom: 1px solid rgb(216 216 216);
 }
 
 .todo__checkbox {
@@ -125,7 +125,7 @@ textarea.todo__text-task {
 }
 
 .highlight {
-  background-color: rgb(245, 245, 245);
+  background-color: rgb(245 245 245);
 }
 
 .todo__container .todo__root li .visible {

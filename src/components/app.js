@@ -77,6 +77,7 @@ class TodoApp {
   }
 
   clearBtnState = 0;
+
   completedTasks = () => this.clearBtnState;
 
   changeClearBtnState = () => {
@@ -123,10 +124,10 @@ class TodoApp {
     checkBox,
     check,
     box,
-    index
+    index,
   ) => {
     this.addDeactivationEvent(textTask, li, ellipsisIcon, trashIcon);
-    this.addCheckboxListener(checkBox, textTask, box, check, index); // ?
+    this.addCheckboxListener(checkBox, textTask, box, check, index);
     this.addActivationEvent(textTask, li, ellipsisIcon, trashIcon, index);
     this.showCompletedTasks(index, check, box, textTask);
   };
@@ -165,7 +166,7 @@ class TodoApp {
       const li = createElement(
         'li',
         { class: 'todo__task-li', draggable: 'true' },
-        liChildren
+        liChildren,
       );
       this.addEvents(
         textTask,
@@ -175,7 +176,7 @@ class TodoApp {
         checkBox,
         check,
         box,
-        index
+        index,
       );
       render(li, root);
     });
