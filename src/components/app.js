@@ -2,13 +2,13 @@ import { createElement, render } from './render.js';
 import Tasks from './tasks.js';
 
 const root = document.querySelector('.todo__root');
+const clearBtn = document.querySelector('.todo__btn');
 
 class TodoApp {
   constructor() {
     this.taskArr = [];
   }
 
-  // Local Storage
   saveLocalStorage() {
     const localTaskArr = JSON.stringify(this.taskArr);
     localStorage.setItem('taskArr', localTaskArr);
@@ -20,8 +20,11 @@ class TodoApp {
     }
   }
 
-  // Main
   getIndex = () => this.taskArr.length + 1;
+
+  clearTaskArr = () => {
+    this.taskArr = [];
+  };
 
   updateTaskArr() {
     const tempArr = [...this.taskArr];
@@ -37,6 +40,7 @@ class TodoApp {
   addRemoveFunction(trashIcon, index) {
     trashIcon.addEventListener('click', () => {
       this.taskArr.splice(index, 1);
+      this.changeClearBtnState();
       this.updateTaskArr();
       this.getLocalStorage();
       this.displayTasks();
@@ -50,23 +54,15 @@ class TodoApp {
     });
   }
 
-  setClasses = (activate, li, ellipsisIcon, trashIcon, cursorStyle) => {
-    if (activate) {
-      li.classList.add('highlight');
-      trashIcon.classList.add('visible');
-      ellipsisIcon.classList.remove('visible');
-      trashIcon.style.cursor = cursorStyle;
-    } else {
-      li.classList.remove('highlight');
-      ellipsisIcon.classList.add('visible');
-      trashIcon.classList.remove('visible');
-      trashIcon.style.cursor = cursorStyle;
-    }
-  }
+  setClasses = (li, ellipsisIcon, trashIcon) => {
+    li.classList.toggle('highlight');
+    ellipsisIcon.classList.toggle('visible');
+    trashIcon.classList.toggle('visible');
+  };
 
   addActivationEvent(textTask, li, ellipsisIcon, trashIcon, index) {
     textTask.addEventListener('click', () => {
-      this.setClasses(true, li, ellipsisIcon, trashIcon, 'pointer');
+      this.setClasses(li, ellipsisIcon, trashIcon);
       this.addChangesListener(textTask, index);
     });
     this.addRemoveFunction(trashIcon, index);
@@ -75,49 +71,123 @@ class TodoApp {
   addDeactivationEvent(textTask, li, ellipsisIcon, trashIcon) {
     textTask.addEventListener('focusout', () => {
       setTimeout(() => {
-        this.setClasses(false, li, ellipsisIcon, trashIcon, 'move');
+        this.setClasses(li, ellipsisIcon, trashIcon);
       }, 120);
     });
   }
 
-  displayTasks() {
+  clearBtnState = 0;
+  completedTasks = () => this.clearBtnState;
+
+  changeClearBtnState = () => {
+    if (this.completedTasks) clearBtn.classList.add('active');
+    else clearBtn.classList.remove('active');
+  };
+
+  showCompletedTasks = (index, check, box, textTask) => {
+    if (this.taskArr[index].completed === true) {
+      check.classList.toggle('hidden');
+      box.classList.toggle('hidden');
+      textTask.classList.toggle('underlined');
+    }
+  };
+
+  addCheckboxListener = (checkBox, textTask, box, check, index) => {
+    checkBox.addEventListener('change', () => {
+      if (checkBox.checked) this.clearBtnState += 1;
+      else this.clearBtnState -= 1;
+      check.classList.toggle('hidden');
+      box.classList.toggle('hidden');
+      textTask.classList.toggle('underlined');
+      this.taskArr[index].completed = !this.taskArr[index].completed;
+      this.saveLocalStorage();
+      this.changeClearBtnState();
+    });
+  };
+
+  deleteCompletedTasks = () => {
+    this.clearBtnState = 0;
+    this.changeClearBtnState();
+    this.taskArr = this.taskArr.filter((task) => task.completed === false);
+    this.saveLocalStorage();
+    this.getLocalStorage();
+    this.updateTaskArr();
+    this.displayTasks();
+  };
+
+  addEvents = (
+    textTask,
+    li,
+    ellipsisIcon,
+    trashIcon,
+    checkBox,
+    check,
+    box,
+    index
+  ) => {
+    this.addDeactivationEvent(textTask, li, ellipsisIcon, trashIcon);
+    this.addCheckboxListener(checkBox, textTask, box, check, index); // ?
+    this.addActivationEvent(textTask, li, ellipsisIcon, trashIcon, index);
+    this.showCompletedTasks(index, check, box, textTask);
+  };
+
+  displayTasks = () => {
     root.innerHTML = '';
     this.taskArr.forEach((task, index) => {
-      const input = createElement('input', {
+      const textTaskProps = {
+        class: 'todo__text-task',
+        contenteditable: 'true',
+        rows: 1,
+      };
+      const check = createElement('i', {});
+      const box = createElement('i', {});
+      const checkBox = createElement('input', {
         type: 'checkBox',
         class: 'todo__checkbox',
       });
-      const textTask = createElement(
-        'textarea',
-        { class: 'todo__text-task', contenteditable: 'true', rows: 1 },
-        [task.description],
-      );
+      const textTask = createElement('textarea', textTaskProps, [
+        task.description,
+      ]);
       const ellipsisIcon = createElement('i', {
-        class: 'fas fa-ellipsis-v icon visible',
+        class: 'icon fas fa-ellipsis-v ellipsis-icon visible',
       });
-      const trashIcon = createElement('i', { class: 'fas fa-trash-alt icon' });
+      const trashIcon = createElement('i', {
+        class: 'icon fas fa-trash-alt trash-icon',
+      });
+      const liChildren = [
+        check,
+        box,
+        checkBox,
+        textTask,
+        ellipsisIcon,
+        trashIcon,
+      ];
       const li = createElement(
         'li',
         { class: 'todo__task-li', draggable: 'true' },
-        [input, textTask, ellipsisIcon, trashIcon],
+        liChildren
       );
-      this.addActivationEvent(textTask, li, ellipsisIcon, trashIcon, index);
-      this.addDeactivationEvent(textTask, li, ellipsisIcon, trashIcon);
+      this.addEvents(
+        textTask,
+        li,
+        ellipsisIcon,
+        trashIcon,
+        checkBox,
+        check,
+        box,
+        index
+      );
       render(li, root);
     });
-  }
-
-  pushTask(taskDescription) {
-    const newTask = new Tasks(taskDescription, false, this.getIndex());
-    this.taskArr.push(newTask);
-    this.saveLocalStorage();
-  }
+  };
 
   addTask = (newTaskInput) => {
     if (newTaskInput.value) {
-      this.pushTask(newTaskInput.value);
-      newTaskInput.value = '';
+      const newTask = new Tasks(newTaskInput.value, false, this.getIndex());
+      this.taskArr.push(newTask);
+      this.saveLocalStorage();
       this.displayTasks();
+      newTaskInput.value = '';
     }
   };
 }
