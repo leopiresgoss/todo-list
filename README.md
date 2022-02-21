@@ -5,7 +5,7 @@ Todo list is a tool that helps to organize your day. It simply lists the things 
 
 - Languages: HTML, CSS and JS
 - Frameworks: None
-- Technologies: Webpack, NPM
+- Technologies: Webpack
 
 ## Getting Started
 
